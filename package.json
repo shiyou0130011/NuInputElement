@@ -1,5 +1,5 @@
 {
-	"name": "NuInputElement",
+	"name": "nu-input-element",
 	"version": "1.0.0",
 	"description": "Input Web Components",
 	"scripts": {
@@ -8,8 +8,12 @@
 		"build-dev": "webpack --mode=development",
 		"build-none": "webpack --mode=none"
 	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/shiyou0130011/NuInputElement.git"
+	},
 	"author": "Tzuyang Tsai",
-	"license": "Apache 2.0",
+	"license": "Apache-2.0",
 	"devDependencies": {
 		"webpack": "^5.74.0",
 		"webpack-cli": "^4.10.0"
