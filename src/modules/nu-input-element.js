@@ -11,7 +11,11 @@ export class NuInputElement extends HTMLElement{
 		let a = this
 		while (a) {
 			a = a.parentNode
-
+			
+			
+			if(!a){
+				break
+			}
 			if (a.tagName == "FORM"){
 				this.#form = a
 				a.addEventListener("formdata", this.#formDataEventHandler)
