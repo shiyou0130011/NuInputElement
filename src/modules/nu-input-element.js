@@ -1,6 +1,7 @@
 export class NuInputElement extends HTMLElement{
 	#form = null
 	#formDataEventHandler = null
+	toString(){return `[object NuInputElement]`}
 	connectedCallback(){
 		let elm = this
 		this.#formDataEventHandler = function(e){

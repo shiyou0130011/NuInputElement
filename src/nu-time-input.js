@@ -1,6 +1,6 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
 class NuTimeInputElement extends NuInputElement{
-	toString(){return `[object ${this.constructor.name}]`}
+	toString(){return `[object NuTimeInputElement]`}
 	constructor() {
 		super()
 		let shadowRoot = this.attachShadow({mode: 'open'})
