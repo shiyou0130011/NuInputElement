@@ -27,7 +27,7 @@ jobs:
         git config --global user.email "action@github.com"
         git config --global user.name "Github Action"
         git add "dist/*"
-        git commit -m "Compiled by webpack" -m "Commit:  ${{ github.event.head_commit.id }}" -m "Message: ${{ github.event.head_commit.message }} "  || echo "No Change"
+        git commit -m "Webpack Compile: ${{ github.event.head_commit.message }} " -m "Commit:  ${{ github.event.head_commit.id }}"   || echo "No Change"
 
     - name: Push changes
       uses: ad-m/github-push-action@master
