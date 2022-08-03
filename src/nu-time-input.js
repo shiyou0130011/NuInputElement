@@ -33,6 +33,8 @@ class NuTimeInputElement extends NuInputElement{
 			}
 			#main{
 				position: relative;
+
+				display: flex;
 			}
 			#hour, #minutes{
 				border-style: hidden;
@@ -40,6 +42,9 @@ class NuTimeInputElement extends NuInputElement{
 				outline-style: none;
 				outline-width: 0;
 				width: 1.2em;
+			}
+			#time-colon{
+				padding: 0 .25em;
 			}
 			#clock{
 				font-size: 80%;
@@ -80,7 +85,7 @@ class NuTimeInputElement extends NuInputElement{
 		</style>
 		<div id="main">
 			<input id="hour" placeholder="- -" maxlength="2" data-max="24" data-min="0"/>
-			<span>:</span>
+			<span id="time-colon">:</span>
 			<input id="minutes" placeholder="- -" maxlength="2" data-max="60" data-min="0"/>
 			<span id="clock">&#x1F551;</span>
 			<!-- time select -->
