@@ -34,7 +34,7 @@ jobs:
       with:
         github_token: ${{ secrets.ACCESS_TOKEN }}
   
-  copy to gh pages:
+  copy-to-gh-pages:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
