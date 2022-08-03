@@ -33,3 +33,35 @@ jobs:
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.ACCESS_TOKEN }}
+  
+  copy to gh pages:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: copy compiled source
+      run: |
+        cp dist/main.js /tmp/main.js
+
+    - uses: actions/checkout@v3
+      with:
+        ref: gh-pages
+    
+    - run: mkdir -p dist
+    - run: cp /tmp/main.js dist/main.js
+
+    - name: Commit 
+      run: |
+        git config --global user.email "action@github.com"
+        git config --global user.name "Github Action"
+        git add "dist/*"
+        git commit -d "Webpack Compile data (${{ github.event.head_commit.id }})"
+        
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.ACCESS_TOKEN }}
+
+
+
+
