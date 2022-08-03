@@ -46,7 +46,7 @@ class NuTimeInputElement extends NuInputElement{
 			#time-colon{
 				padding: 0 .25em;
 			}
-			#clock{
+			#time-select-icon{
 				font-size: 80%;
 			}
 			#time-select{
@@ -87,7 +87,7 @@ class NuTimeInputElement extends NuInputElement{
 			<input id="hour" placeholder="- -" maxlength="2" data-max="24" data-min="0"/>
 			<span id="time-colon">:</span>
 			<input id="minutes" placeholder="- -" maxlength="2" data-max="60" data-min="0"/>
-			<span id="clock">&#x1F551;</span>
+			<span id="time-select-icon">&#x1F551;</span>
 			<!-- time select -->
 			<div id="time-select" data-hide="true">
 				<div id="hour-selection"></div>
@@ -199,7 +199,7 @@ class NuTimeInputElement extends NuInputElement{
 		})
 
 
-		shadowRoot.querySelector("#clock").addEventListener("click", function(){
+		shadowRoot.querySelector("#time-select-icon").addEventListener("click", function(){
 			let display = shadowRoot.querySelector("#time-select").dataset.hide
 			shadowRoot.querySelector("#time-select").dataset.hide = !JSON.parse(display)
 			shadowRoot.getElementById("hour").dispatchEvent(new CustomEvent("updateselect"))
