@@ -1,4 +1,22 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
+/**
+ * @element nu-time-input
+ * @slot select-icon
+ * @attribute name  Same as the attribute of the same name as input
+ * @attribute value Same as the attribute of the same name as input
+ * @attribute max Same as the attribute of the same name as input
+ * @attribute min Same as the attribute of the same name as input
+ * 
+ * @property value Same as the property of the same name as input
+ * @property valueAsDate Same as the property of the same name as <input type="time">
+ * @property valueAsNumber Same as the property of the same name as <input type="time">
+ * @property name Same as the property of the same name as input
+ *
+ * @csspart --selection-selected-bg-color 
+ * @csspart --selection-selected-color 
+ * @csspart --selection-hover-bg-color 
+ * @csspart --selection-hover-color
+ */
 class NuTimeInputElement extends NuInputElement{
 	toString(){return `[object NuTimeInputElement]`}
 	constructor() {
