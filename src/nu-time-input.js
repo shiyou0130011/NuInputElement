@@ -87,7 +87,7 @@ class NuTimeInputElement extends NuInputElement{
 			<input id="hour" placeholder="- -" maxlength="2" data-max="24" data-min="0"/>
 			<span id="time-colon">:</span>
 			<input id="minutes" placeholder="- -" maxlength="2" data-max="60" data-min="0"/>
-			<span id="time-select-icon">&#x1F551;</span>
+			<div id="time-select-icon"><slot name="select-icon">&#x1F551;</slot></div>
 			<!-- time select -->
 			<div id="time-select" data-hide="true">
 				<div id="hour-selection"></div>
