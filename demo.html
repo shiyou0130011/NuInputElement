@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+	<head>
+		<meta charset="UTF-8" />
+		<title>NuInputElement Demo</title>
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.rtl.min.css" integrity="sha512-v/0rtuCuKOmpkT153wINc6H7UtLualQIhOpXdmB4Y1KtYBBtg++8UFPyYJBHLmnd2qBbrKvO+eudewymb5FW6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+		<script src="dist/main.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+	</head>
+	<body>
+		<main>
+			<div ng-app="myApp" ng-controller="myCtrl">
+				<div class="row">
+					<div class="col">&lt;form&gt;</div>
+					<div class="col"></div>
+				</div>
+
+				<div class="row">
+					<div class="col">
+						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName">" <br />
+						value= "<input type="text" ng-model="nuTimeHour">:<input type="text" ng-model="nuTimeMinute">"                <br />
+						
+						&gt;
+					</div>
+					<div class="col">
+						<nu-time-input name="{{nuTimeName}}" value="{{nuTimeHour + ':' nuTimeMinute}}" readonly></nu-time-input>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col">&lt;/form&gt;</div>
+					<div class="col"></div>
+				</div>
+			</div>
+		</main>
+
+		<script>
+			var app = angular.module('myApp', []);
+			app.controller('myCtrl', function($scope) {
+				$scope.nuTimeHour = "12"
+				$scope.nuTimeMinute = "34";
+			});
+		</script>
+	</body>
+</html>
