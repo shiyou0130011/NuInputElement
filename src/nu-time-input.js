@@ -257,7 +257,7 @@ class NuTimeInputElement extends NuInputElement{
 	}
 
 	static get observedAttributes() {
-		return ["name", "value", "max", "min"]
+		return [... super.observedAttributes, "max", "min"]
 	}
 	get valueAsNumber(){
 		let shadowRoot = this.shadowRoot
