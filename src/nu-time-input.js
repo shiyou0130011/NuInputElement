@@ -21,6 +21,7 @@ class NuTimeInputElement extends NuInputElement{
 	toString(){return `[object NuTimeInputElement]`}
 	constructor() {
 		super()
+		let currentElement = this
 		let shadowRoot = this.attachShadow({mode: 'open'})
 		let temp = document.createElement("template")
 		temp.innerHTML =`
@@ -49,6 +50,27 @@ class NuTimeInputElement extends NuInputElement{
 				display: inline-block;
 				cursor: default;
 			}
+			#main #mask{
+				display: none
+			}
+			#main.disabled{
+				position: relative
+			}
+			#main.disabled #mask, #main.readonly #mask{
+				width: 100%;
+				height: 100%;
+
+				display: block;
+
+				position: absolute;
+			}
+			#main.disabled #mask{
+				background-color: rgba(153, 153, 153, .75);
+			}
+			#main.readonly #mask{
+				background-color: rgba(245, 245, 245, .75);
+			}
+
 			#main{
 				position: relative;
 
@@ -111,6 +133,7 @@ class NuTimeInputElement extends NuInputElement{
 				<div id="hour-selection"></div>
 				<div id="minute-selection"></div>
 			</div>
+			<div id="mask"></div>
 		</div>	
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
@@ -218,6 +241,11 @@ class NuTimeInputElement extends NuInputElement{
 
 
 		shadowRoot.querySelector("#time-select-icon").addEventListener("click", function(){
+			console.debug(currentElement)
+			if(currentElement.disabled || currentElement.readonly){
+				return false
+			}
+
 			let display = shadowRoot.querySelector("#time-select").dataset.hide
 			shadowRoot.querySelector("#time-select").dataset.hide = !JSON.parse(display)
 			shadowRoot.getElementById("hour").dispatchEvent(new CustomEvent("updateselect"))
@@ -225,6 +253,11 @@ class NuTimeInputElement extends NuInputElement{
 		})
 		shadowRoot.querySelectorAll("#hour-selection .select-option").forEach(function(opt){
 			opt.addEventListener("click", function(){
+				console.debug(currentElement)
+				if(currentElement.disabled || currentElement.readonly){
+					return false
+				}
+
 				shadowRoot.querySelector("#time-select").dataset.hide = !0
 				shadowRoot.getElementById("hour").value = this.innerText
 				shadowRoot.getElementById("hour").dispatchEvent(new CustomEvent("input"))
@@ -232,6 +265,10 @@ class NuTimeInputElement extends NuInputElement{
 		})
 		shadowRoot.querySelectorAll("#minute-selection .select-option").forEach(function(opt){
 			opt.addEventListener("click", function(){
+				if(currentElement.disabled || currentElement.readonly){
+					return false
+				}
+
 				shadowRoot.querySelector("#time-select").dataset.hide = !0
 				shadowRoot.getElementById("minutes").value = this.innerText
 				shadowRoot.getElementById("minutes").dispatchEvent(new CustomEvent("input"))
@@ -291,6 +328,14 @@ class NuTimeInputElement extends NuInputElement{
 
 	attributeChangedCallback(name, oldValue, newValue){
 		switch(name){
+			case "disabled":
+			case "readonly":
+				if(newValue === "" || (newValue || "").toLowerCase() == name.toLowerCase()){
+					this.shadowRoot.getElementById("main").classList.add(name)
+				}else{
+					this.shadowRoot.getElementById("main").classList.remove(name)
+				}
+				break
 			case "value":
 				if(newValue.match(/\d{2}:\d{2}/g)){
 					let timeDatas = newValue.match(/\d{2}:\d{2}/g)[0].split(":")

@@ -4,7 +4,30 @@ export class NuInputElement extends HTMLElement{
 	
 	static get observedAttributes() {
 		return ["name", "value", "disabled", "readonly"]
-	}	
+	}
+	
+	set disabled(d){
+		if(d === true || d === 1 || (("string" == typeof d) && d.toLowerCase() == "disabled") ){
+			this.setAttribute("disabled", "disabled")
+		}else{
+			this.removeAttribute("disabled")
+		}
+	}
+
+	set readonly(r){
+		if(r === true || r === 1 || (("string" == typeof r) && r.toLowerCase() == "readonly") ){
+			this.setAttribute("readonly", "readonly")
+		}else{
+			this.removeAttribute("readonly")
+		}
+	}
+
+	get disabled(){
+		return this.getAttribute("disabled") != null && (this.getAttribute("disabled") === "" || (this.getAttribute("disabled") || "").toLowerCase() == "disabled")
+	}
+	get readonly(){
+		return this.getAttribute("readonly") != null && (this.getAttribute("readonly") === "" || (this.getAttribute("readonly") || "").toLowerCase() == "readonly")
+	}
 	
 	toString(){return `[object NuInputElement]`}
 	connectedCallback(){
