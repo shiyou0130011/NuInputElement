@@ -162,7 +162,6 @@ class NuTimeInputElement extends NuInputElement{
 		})
 		shadowRoot.querySelectorAll("input").forEach(function(input){
 			input.addEventListener("input", function(){
-				console.log(this.value)
 				this.value = this.value.replace(/[^\d]/g, "")
 			})
 			input.addEventListener("focusout", function(){
@@ -241,7 +240,6 @@ class NuTimeInputElement extends NuInputElement{
 
 
 		shadowRoot.querySelector("#time-select-icon").addEventListener("click", function(){
-			console.debug(currentElement)
 			if(currentElement.disabled || currentElement.readonly){
 				return false
 			}
@@ -253,7 +251,6 @@ class NuTimeInputElement extends NuInputElement{
 		})
 		shadowRoot.querySelectorAll("#hour-selection .select-option").forEach(function(opt){
 			opt.addEventListener("click", function(){
-				console.debug(currentElement)
 				if(currentElement.disabled || currentElement.readonly){
 					return false
 				}
