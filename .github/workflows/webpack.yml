@@ -30,10 +30,10 @@ jobs:
         git commit -m "Webpack Compile: ${{ github.event.head_commit.message }} " -m "Commit:  ${{ github.event.head_commit.id }}"   || echo "No Change"
 
     - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.ACCESS_TOKEN }}
-        branch: ${{ github.ref }}
+      env:
+        TOKEN: ${{secrets.ACCESS_TOKEN}}
+        REF: github.com/${{github.repository}}
+      run: git push --force --quiet "https://${TOKEN}@${REF}" 
   
   copy-to-gh-pages:
     needs: build
@@ -60,10 +60,10 @@ jobs:
         git commit -m "Webpack Compile data: ${{ github.event.head_commit.message }}" -m "Commit: ${{ github.event.head_commit.id }}" || echo "No Change"
         
     - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.ACCESS_TOKEN }}
-        branch: gh-pages
+      env:
+        TOKEN: ${{secrets.ACCESS_TOKEN}}
+        REF: github.com/${{github.repository}}
+      run: git push --force --quiet "https://${TOKEN}@${REF}" 
 
 
 
