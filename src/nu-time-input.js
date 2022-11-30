@@ -1,6 +1,6 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
 /**
- * 24-hour clock 
+ * 24-hour clock time input
  * @element nu-time-input
  * @slot select-icon
  * @attribute name  Same as the attribute of the same name as input
@@ -94,9 +94,12 @@ class NuTimeInputElement extends NuInputElement{
 				position: absolute;
 				top: 100%;
 				left: 0;
-				background-color: white;
+				
 				max-height: 12rem;
 				justify-content: space-around;
+				
+				background-color: white;
+				box-shadow: 1px 1px 6px #999;
 			}
 			#time-select[data-hide=true]{
 				display: none;
