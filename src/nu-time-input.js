@@ -1,5 +1,6 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
 /**
+ * 24-hour clock 
  * @element nu-time-input
  * @slot select-icon
  * @attribute name  Same as the attribute of the same name as input
