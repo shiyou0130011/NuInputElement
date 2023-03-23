@@ -39,5 +39,5 @@ For example, to use as js script:
 
 This project use Private fields. In other words, only browsers support private fields can run NuInputElement normally.
 
-Please check [MDN[(https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields#browser_compatibility) to see the browser compatibility.
+Please check [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields#browser_compatibility) to see the browser compatibility.
 
