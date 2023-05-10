@@ -24,7 +24,7 @@
 					</div>
 					<div class="col">
 						{{ nuTimeName }}
-						<nu-time-input name="{{ nuTimeName }}" value="{{ nuTimeHour }}:{{ nuTimeMinute }}" readonly></nu-time-input>
+						<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
 					</div>
 				</div>
 
