@@ -141,9 +141,11 @@ class NuTimeRangeElement extends HTMLElement{
 	connectedCallback(){
 		let elm = this
 		this.#formDataEventHandler = function(e){
-			if(elm.startName && elm.endName){
-				e.formData.append(elm.startName, elm.startValue)
-				e.formData.append(elm.endName, elm.endValue)
+			if(e instanceof FormDataEvent){
+				if(elm.startName && elm.endName){
+					e.formData.append(elm.startName, elm.startValue)
+					e.formData.append(elm.endName, elm.endValue)
+				}
 			}
 		}
 		let a = this

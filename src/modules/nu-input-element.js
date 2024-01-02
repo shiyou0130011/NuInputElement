@@ -33,7 +33,9 @@ export class NuInputElement extends HTMLElement{
 	connectedCallback(){
 		let elm = this
 		this.#formDataEventHandler = function(e){
-			e.formData.append(elm.name, elm.value)
+			if(e instanceof FormDataEvent){
+				e.formData.append(elm.name, elm.value)
+			}
 		}
 
 		let a = this
