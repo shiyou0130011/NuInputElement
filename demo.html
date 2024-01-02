@@ -45,13 +45,14 @@
 						&lt;hr /&gt; <br />
 						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" <br/>
 						<span class="tab">&#09;</span> end-name="<input type="text" ng-model="nuRangeEnd"  />" <br/>
+						<span class="tab">&#09;</span> readonly <br />
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input-group&gt; <br />
 					</div>
 					<div class="col">
 						<form>
 							<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
 							<hr />
-							<nu-time-input-group start-name="{{ nuRangeStart }}" end-name="{{ nuRangeEnd }}" ></nu-time-input-group>
+							<nu-time-input-group start-name="{{ nuRangeStart }}" end-name="{{ nuRangeEnd }}" readonly ></nu-time-input-group>
 						</form>
 					</div>
 				</div>
@@ -64,7 +65,7 @@
 				<div class="row">
 					<div class="col"></div>
 					<div class="col">
-						Form&rsquot; parameters: 
+						Form&rsquo; parameters: 
 						<pre><code id="result" ></code></pre>
 					</div>
 				</div>
