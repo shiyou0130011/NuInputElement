@@ -14,6 +14,8 @@ import "./nu-time-input.js"
  * 
  */
 class NuTimeRangeElement extends HTMLElement{
+	#form = null
+	#formDataEventHandler = null
 	toString(){return `[object NuTimeRangeElement]`}
 	static get observedAttributes() {
 		return [
@@ -109,8 +111,33 @@ class NuTimeRangeElement extends HTMLElement{
 	}
 
 	connectedCallback(){
+		let elm = this
+		this.#formDataEventHandler = function(e){
+			if(elm.startName && elm.endName){
+				e.formData.append(elm.startName, elm.startValue)
+				e.formData.append(elm.endName, elm.endValue)
+			}
+		}
+		let a = this
+		while (a) {
+			a = a.parentNode
+			
+			
+			if(!a){
+				break
+			}
+			if (a.tagName == "FORM"){
+				this.#form = a
+				a.addEventListener("formdata", this.#formDataEventHandler)
+				break
+			}
+		}
 	}
 	disconnectedCallback(){
+		if(!this.#form){
+			return
+		}
+		this.#form.removeEventListener("formdata", this.#formDataEventHandler)
 	}
 }
 
