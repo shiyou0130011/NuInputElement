@@ -21,6 +21,7 @@ class NuTimeRangeElement extends HTMLElement{
 		return [
 			"start-name", "end-name", "start-value", "end-value",
 			"classes", "styles"
+			"disabled", "readonly"
 		]
 	}
 	constructor() {
@@ -77,6 +78,28 @@ class NuTimeRangeElement extends HTMLElement{
 	set endValue(value){
 		this.setAttribute("end-name", value)
 	}
+	set disabled(d){
+		if(d === true || d === 1 || (("string" == typeof d) && d.toLowerCase() == "disabled") ){
+			this.setAttribute("disabled", "disabled")
+		}else{
+			this.removeAttribute("disabled")
+		}
+	}
+
+	set readonly(r){
+		if(r === true || r === 1 || (("string" == typeof r) && r.toLowerCase() == "readonly") ){
+			this.setAttribute("readonly", "readonly")
+		}else{
+			this.removeAttribute("readonly")
+		}
+	}
+
+	get disabled(){
+		return this.getAttribute("disabled") != null && (this.getAttribute("disabled") === "" || (this.getAttribute("disabled") || "").toLowerCase() == "disabled")
+	}
+	get readonly(){
+		return this.getAttribute("readonly") != null && (this.getAttribute("readonly") === "" || (this.getAttribute("readonly") || "").toLowerCase() == "readonly")
+	}
 	
 
 
@@ -107,6 +130,11 @@ class NuTimeRangeElement extends HTMLElement{
 				this.shadowRoot.getElementById("start").cssText = newValue
 				this.shadowRoot.getElementById("end").cssText = newValue
 				break
+			case "readonly":
+			case "disabled":
+				this.shadowRoot.getElementById("start").setAttribute(name, newValue)
+				this.shadowRoot.getElementById("end").setAttribute(name, newValue)
+				break
 		}
 	}
 
@@ -121,7 +149,6 @@ class NuTimeRangeElement extends HTMLElement{
 		let a = this
 		while (a) {
 			a = a.parentNode
-			
 			
 			if(!a){
 				break
