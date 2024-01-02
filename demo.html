@@ -13,9 +13,12 @@
 		</style>
 		<script>
 			window.addEventListener("load", function(){
-				document.forms[0].addEventListener("change", function(){
-					document.getElementById("result").innerText = new URLSearchParams(new FormData(this)) + ""
+				document.querySelectorAll("#form-code input").forEach(function(){
+					this.addEventListener("change", function(){
+						document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
+					})
 				})
+					
 			})
 		</script>
 	</head>
@@ -33,10 +36,10 @@
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readonly <br />
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/nu-time-input name&gt;
-						&lt;/label&gt;
-						&lt;hr /&gt;
-						&lt;nu-time-input-group start-name="range-start" end="range-end"&gt;&lt;/nu-time-input-group&gt;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/nu-time-input name&gt; <br />
+						&lt;/label&gt; <br />
+						&lt;hr /&gt; <br />
+						&lt;nu-time-input-group start-name="range-start" end="range-end"&gt;&lt;/nu-time-input-group&gt; <br />
 					</div>
 					<div class="col">
 						<form>
@@ -56,7 +59,7 @@
 					<div class="col"></div>
 					<div class="col">
 						Form&rsquot; parameters: 
-						<pre id="result" ></pre>
+						<pre><code id="result" ></code></pre>
 					</div>
 				</div>
 			</div>
