@@ -44,13 +44,16 @@ jobs:
     - name: copy compiled source
       run: |
         cp dist/main.js /tmp/main.js
+        cp dist/main.js.map /tmp/main.js.map
 
     - uses: actions/checkout@v3
       with:
         ref: gh-pages
     
     - run: mkdir -p dist
-    - run: cp /tmp/main.js dist/main.js
+    - run: |
+        cp /tmp/main.js dist/main.js
+        cp /tmp/main.js.map dist/main.js.map
 
     - name: Commit 
       run: |
