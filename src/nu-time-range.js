@@ -20,7 +20,7 @@ class NuTimeRangeElement extends HTMLElement{
 	static get observedAttributes() {
 		return [
 			"start-name", "end-name", "start-value", "end-value",
-			"classes", "styles"
+			"classes", "styles",
 			"disabled", "readonly"
 		]
 	}
