@@ -22,13 +22,13 @@
 						document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 					})
 				})
-					
+				document.querySelector("#form-code input").dispatchEvent(new Event("change"))
 			})
 		</script>
 	</head>
 	<body>
 		<main>
-			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34;nuTimeName=time;">
+			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34;nuTimeName='time';nuRangeStart='rs';nuRangeEnd='re'">
 				<div class="row">
 					<div class="col">&lt;form&gt;</div>
 					<div class="col"></div>
@@ -43,15 +43,15 @@
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input name&gt; <br />
 						
 						&lt;hr /&gt; <br />
-						&lt;nu-time-input-group start-name="range-start" <br/>
-						<span class="tab">&#09;</span> end-name="range-end" <br/>
+						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" <br/>
+						<span class="tab">&#09;</span> end-name="<input type="text" ng-model="nuRangeEnd"  />" <br/>
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input-group&gt; <br />
 					</div>
 					<div class="col">
 						<form>
 							<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
 							<hr />
-							<nu-time-input-group start-name="range-start" end="range-end" ></nu-time-input-group>
+							<nu-time-input-group start-name="{{ nuRangeStart }}" end-name="{{ nuRangeEnd }}" ></nu-time-input-group>
 						</form>
 					</div>
 				</div>
