@@ -6,6 +6,18 @@
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.rtl.min.css" integrity="sha512-v/0rtuCuKOmpkT153wINc6H7UtLualQIhOpXdmB4Y1KtYBBtg++8UFPyYJBHLmnd2qBbrKvO+eudewymb5FW6w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 		<script src="dist/main.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
+		<style>
+			#form-code{
+				font-family: consola, monospace;
+			}
+		</style>
+		<script>
+			window.addEventListener("load", function(){
+				document.forms[0].addEventListener("change", function(){
+					document.getElementById("result").innerText = new URLSearchParams(new FormData(this)) + ""
+				})
+			})
+		</script>
 	</head>
 	<body>
 		<main>
@@ -16,21 +28,36 @@
 				</div>
 
 				<div class="row">
-					<div class="col">
+					<div class="col" id="form-code">
+						&lt;label&gt;
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readonly <br />
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/nu-time-input name&gt;
+						&lt;/label&gt;
+						&lt;hr /&gt;
+						&lt;nu-time-input-group start-name="range-start" end="range-end"&gt;&lt;/nu-time-input-group&gt;
 					</div>
 					<div class="col">
-						{{ nuTimeName }}
-						<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
+						<form>
+							<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
+							<hr />
+							<nu-time-input-group start-name="range-start" end="range-end" ></nu-time-input-group>
+						</form>
 					</div>
 				</div>
 
 				<div class="row">
 					<div class="col">&lt;/form&gt;</div>
 					<div class="col"></div>
+				</div>
+
+				<div class="row">
+					<div class="col"></div>
+					<div class="col">
+						Form&rsquot; parameters: 
+						<pre id="result" ></pre>
+					</div>
 				</div>
 			</div>
 		</main>
