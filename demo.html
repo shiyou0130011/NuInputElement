@@ -10,6 +10,10 @@
 			#form-code{
 				font-family: consola, monospace;
 			}
+			.tab{
+				white-space: pre;
+				tab-size: 8;
+			}
 		</style>
 		<script>
 			window.addEventListener("load", function(){
@@ -24,7 +28,7 @@
 	</head>
 	<body>
 		<main>
-			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34">
+			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34;nuTimeName=time;">
 				<div class="row">
 					<div class="col">&lt;form&gt;</div>
 					<div class="col"></div>
@@ -32,14 +36,16 @@
 
 				<div class="row">
 					<div class="col" id="form-code">
-						&lt;label&gt;
+						
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;readonly <br />
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&gt;&lt;/nu-time-input name&gt; <br />
-						&lt;/label&gt; <br />
+						<span class="tab">&#09;</span> value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
+						<span class="tab">&#09;</span> readonly <br />
+						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input name&gt; <br />
+						
 						&lt;hr /&gt; <br />
-						&lt;nu-time-input-group start-name="range-start" end="range-end"&gt;&lt;/nu-time-input-group&gt; <br />
+						&lt;nu-time-input-group start-name="range-start" <br/>
+						<span class="tab">&#09;</span> end-name="range-end" <br/>
+						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input-group&gt; <br />
 					</div>
 					<div class="col">
 						<form>
