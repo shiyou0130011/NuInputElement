@@ -14,15 +14,18 @@
 				white-space: pre;
 				tab-size: 8;
 			}
+			input[type="number"]{
+				width: 4rem
+			}
 		</style>
 		<script>
 			window.addEventListener("load", function(){
 				document.querySelectorAll("#form-code input").forEach(function(){
-					this.addEventListener("change", function(){
+					this.addEventListener("input", function(){
 						document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 					})
 				})
-				document.querySelector("#form-code input").dispatchEvent(new Event("change"))
+				document.querySelector("#form-code input").dispatchEvent(new Event("input"))
 			})
 		</script>
 	</head>
