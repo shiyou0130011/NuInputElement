@@ -7,8 +7,9 @@
 		<script src="dist/main.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.9/angular.min.js"></script>
 		<style>
-			#form-code{
+			.form-code{
 				font-family: consola, monospace;
+				font-size: .95rem
 			}
 			.tab{
 				white-space: pre;
@@ -25,7 +26,7 @@
 						document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 					})
 				})
-				document.querySelector("#form-code input").dispatchEvent(new Event("input"))
+				document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 			})
 		</script>
 	</head>
@@ -33,12 +34,12 @@
 		<main>
 			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34;nuTimeName='time';nuRangeStart='rs';nuRangeEnd='re'">
 				<div class="row">
-					<div class="col">&lt;form&gt;</div>
+					<div class="col" class="form-code">&lt;form&gt;</div>
 					<div class="col"></div>
 				</div>
 
 				<div class="row">
-					<div class="col" id="form-code">
+					<div class="col" class="form-code">
 						
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
 						<span class="tab">&#09;</span> value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
@@ -46,8 +47,9 @@
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input name&gt; <br />
 						
 						&lt;hr /&gt; <br />
-						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" <br/>
-						<span class="tab">&#09;</span> end-name="<input type="text" ng-model="nuRangeEnd"  />" <br/>
+						
+						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" start-value="01:23" <br/>
+						<span class="tab">&#09;</span> end-name="<input type="text" ng-model="nuRangeEnd"  />" end-value="15:45"<br/>
 						<span class="tab">&#09;</span> readonly <br />
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input-group&gt; <br />
 					</div>
@@ -55,13 +57,13 @@
 						<form>
 							<nu-time-input name="{{ nuTimeName }}" value="{{ (nuTimeHour || 0) < 10? '0' + nuTimeHour: nuTimeHour }}:{{  (nuTimeMinute || 0) < 10? '0' + nuTimeMinute: nuTimeMinute }}" readonly></nu-time-input>
 							<hr />
-							<nu-time-input-group start-name="{{ nuRangeStart }}" end-name="{{ nuRangeEnd }}" readonly ></nu-time-input-group>
+							<nu-time-input-group start-name="{{ nuRangeStart }}" start-value="01:23" end-name="{{ nuRangeEnd }}" end-value="15:45" readonly ></nu-time-input-group>
 						</form>
 					</div>
 				</div>
 
 				<div class="row">
-					<div class="col">&lt;/form&gt;</div>
+					<div class="col" class="form-code">&lt;/form&gt;</div>
 					<div class="col"></div>
 				</div>
 
