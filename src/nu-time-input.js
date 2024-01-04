@@ -283,7 +283,9 @@ class NuTimeInputElement extends NuInputElement{
 	}
 	set value(data){
 		if(data instanceof Date){
-
+			let h = `000${data.getHours()}`.substr(-2)
+			let m = `000${data.getMinutes()}`.substr(-2)
+			data = `${h}:${m}`
 		}
 		this.setAttribute("value", data)
 	}
@@ -347,6 +349,9 @@ class NuTimeInputElement extends NuInputElement{
 				break
 			case "max":
 				if(newValue.match(/\d{2}:\d{2}/g)){
+					if(this.value > newValue){
+						this.value = newValue
+					}
 				}
 				break
 			case "min":
