@@ -21,11 +21,12 @@
 		</style>
 		<script>
 			window.addEventListener("load", function(){
-				document.querySelectorAll("#form-code input").forEach(function(){
+				document.querySelectorAll(".form-code input").forEach(function(){
 					this.addEventListener("input", function(){
 						document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 					})
 				})
+				
 				document.getElementById("result").innerText = new URLSearchParams(new FormData(document.forms[0])) + ""
 			})
 		</script>
@@ -34,12 +35,12 @@
 		<main>
 			<div ng-app="" ng-init="nuTimeHour=12;nuTimeMinute=34;nuTimeName='time';nuRangeStart='rs';nuRangeEnd='re'">
 				<div class="row">
-					<div class="col" class="form-code">&lt;form&gt;</div>
+					<div class="col form-code">&lt;form&gt;</div>
 					<div class="col"></div>
 				</div>
 
 				<div class="row">
-					<div class="col" class="form-code">
+					<div class="col form-code">
 						
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
 						<span class="tab">&#09;</span> value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
@@ -63,7 +64,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col" class="form-code">&lt;/form&gt;</div>
+					<div class="col form-code">&lt;/form&gt;</div>
 					<div class="col"></div>
 				</div>
 
