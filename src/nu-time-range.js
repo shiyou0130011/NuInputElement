@@ -11,6 +11,7 @@ import "./nu-time-input.js"
  * @attribute end-value
  * @attribute classes the class used in both time inputs
  * @attribute styles the CSS styles used in both time inputs
+ * @attribute nonce The nonce attribute used in both time inputs
  * 
  */
 class NuTimeRangeElement extends HTMLElement{

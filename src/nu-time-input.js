@@ -7,6 +7,9 @@ import {NuInputElement} from "./modules/nu-input-element.js"
  * @attribute value Same as the attribute of the same name as input
  * @attribute max Same as the attribute of the same name as input
  * @attribute min Same as the attribute of the same name as input
+ * @attribute disabled Same as the attribute of the same name as input
+ * @attribute readonly Same as the attribute of the same name as input
+ * @attribute nonce Same as the attribute of the same name as input
  * 
  * @property value Same as the property of the same name as input
  * @property valueAsDate Same as the property of the same name as <input type="time">
