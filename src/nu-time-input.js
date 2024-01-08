@@ -292,7 +292,7 @@ class NuTimeInputElement extends NuInputElement{
 	get name(){
 		return this.getAttribute("name")
 	}
-	set value(data){
+	set name(data){
 		this.setAttribute("name", data)
 	}
 
