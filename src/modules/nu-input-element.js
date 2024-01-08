@@ -3,7 +3,7 @@ export class NuInputElement extends HTMLElement{
 	#formDataEventHandler = null
 	
 	static get observedAttributes() {
-		return ["name", "value", "disabled", "readonly"]
+		return ["name", "value", "disabled", "readonly", "nonce"]
 	}
 	
 	set disabled(d){
@@ -28,6 +28,13 @@ export class NuInputElement extends HTMLElement{
 	get readonly(){
 		return this.getAttribute("readonly") != null && (this.getAttribute("readonly") === "" || (this.getAttribute("readonly") || "").toLowerCase() == "readonly")
 	}
+	set nonce(n){
+		this.setAttribute("nonce", "n")
+	}
+	get nonce(){
+		return this.getAttribute("nonce")
+	}
+
 	
 	toString(){return `[object NuInputElement]`}
 	connectedCallback(){
@@ -60,5 +67,15 @@ export class NuInputElement extends HTMLElement{
 		}
 		this.#form.removeEventListener("formdata", this.#formDataEventHandler)
 
+	}
+
+	attributeChangedCallback(name, oldValue, newValue){
+		switch(name){
+			case "nonce":
+				this.shadowRoot.querySelectorAll("style, script").forEach(function(elem){
+					elem.setAttribute("nonce", newValue)
+				})
+				break
+		}
 	}
 }

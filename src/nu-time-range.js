@@ -21,7 +21,8 @@ class NuTimeRangeElement extends HTMLElement{
 		return [
 			"start-name", "end-name", "start-value", "end-value",
 			"classes", "styles",
-			"disabled", "readonly"
+			"disabled", "readonly",
+			"nonce",
 		]
 	}
 	constructor() {
@@ -100,6 +101,13 @@ class NuTimeRangeElement extends HTMLElement{
 	get readonly(){
 		return this.getAttribute("readonly") != null && (this.getAttribute("readonly") === "" || (this.getAttribute("readonly") || "").toLowerCase() == "readonly")
 	}
+	set nonce(n){
+		this.setAttribute("nonce", "n")
+	}
+	get nonce(){
+		return this.getAttribute("nonce")
+	}
+
 	
 
 
@@ -134,6 +142,11 @@ class NuTimeRangeElement extends HTMLElement{
 			case "disabled":
 				this.shadowRoot.getElementById("start").setAttribute(name, newValue)
 				this.shadowRoot.getElementById("end").setAttribute(name, newValue)
+				break
+			case "nonce":
+				this.shadowRoot.querySelectorAll("style, script").forEach(function(elem){
+					elem.setAttribute("nonce", newValue)
+				})
 				break
 		}
 	}

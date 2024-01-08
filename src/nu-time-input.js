@@ -330,6 +330,7 @@ class NuTimeInputElement extends NuInputElement{
 
 
 	attributeChangedCallback(name, oldValue, newValue){
+		super.attributeChangedCallback(name, oldValue, newValue)
 		switch(name){
 			case "disabled":
 			case "readonly":
