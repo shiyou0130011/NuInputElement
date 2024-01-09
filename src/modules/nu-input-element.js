@@ -1,6 +1,11 @@
 export class NuInputElement extends HTMLElement{
 	#form = null
 	#formDataEventHandler = null
+
+	constructor() {
+		super()
+		this.role = "input"
+	}
 	
 	static get observedAttributes() {
 		return ["name", "value", "disabled", "readonly", "nonce"]
