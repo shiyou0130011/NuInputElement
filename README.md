@@ -6,6 +6,7 @@
 
 A package of Input Web Components
 
+
 ## Why called this name
 
 This package is to create input components which support in all morden browsers.
@@ -41,3 +42,6 @@ This project use Private fields. In other words, only browsers support private f
 
 Please check [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields#browser_compatibility) to see the browser compatibility.
 
+## Demo
+
+You can see the demo in [Demo page](https://shiyou0130011.github.io/NuInputElement/demo.html)
