@@ -62,6 +62,13 @@ class NuMonthInput extends NuInputElement{
 		</div>
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
+
+		// setup event
+		shadowRoot.querySelector("#clear-btn").addEventListener("click", function(){
+			currentElement.removeAttribute("value")
+			currentElement.value = null
+		})
+
 	}
 
 	get value(){
