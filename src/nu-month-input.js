@@ -58,7 +58,7 @@ class NuMonthInput extends NuInputElement{
 
 				color: transparent;
 			}
-			:host:hover #clear-btn{
+			#main:hover #clear-btn{
 				color: var(--clear-btn-color)
 			}
 
@@ -121,7 +121,7 @@ class NuMonthInput extends NuInputElement{
 				}catch(e){
 					console.error(newValue, "is not legel language")
 				}
-				
+
 				if(this.#year !== null && this.#month != null){
 					this.shadowRoot.querySelector("#display-value").innerHTML = this.#formatter.format(
 						new Date(this.#year, this.#month - 1)
