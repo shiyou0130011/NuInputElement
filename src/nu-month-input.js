@@ -1,12 +1,21 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
 /**
  * @element nu-month-input
- * @slot select-icon The calendar icon
+ * @slot select-icon The calendar icon.
+ * 
+ * @attribute lang Same as the attribute of the same name as any element. Also, the date string displayed can be formated by this attribute.
+ * 	For example, 
+ * 		when value is <q>2020-01</q> and lang is <q>ja-JP-u-ca-japanese</q>, it will shows <q>令和2年1月</q>;
+ * 		when lang attribute is <q>pt-BR</q>, it will shows <q>janeiro de 2020</q>
  */
 class NuMonthInput extends NuInputElement{
 	toString(){return `[object NuMonthInput]`}
 	#defaultValue = "---- --"
 	/** The local for formating date */
+	#formatSetting = {
+		year: "numeric",
+		month: "long"
+	}
 	#formatter = new Intl.DateTimeFormat(
 		navigator.userLanguage || navigator.language || navigator.languages[0] || "default",
 		{
@@ -97,7 +106,7 @@ class NuMonthInput extends NuInputElement{
 	}
 
 	static get observedAttributes() {
-		return [... super.observedAttributes, "max", "min"]
+		return [... super.observedAttributes, "max", "min", "lang"]
 	}
 
 	attributeChangedCallback(name, oldValue, newValue){
@@ -106,6 +115,20 @@ class NuMonthInput extends NuInputElement{
 			case "value":
 				this.value = newValue
 				break
+			case "lang":
+				try{
+					this.#formatter = new Intl.DateTimeFormat(newValue, this.#formatSetting)
+				}catch(e){
+					console.error(newValue, "is not legel language")
+				}
+				
+				if(this.#year !== null && this.#month != null){
+					this.shadowRoot.querySelector("#display-value").innerHTML = this.#formatter.format(
+						new Date(this.#year, this.#month - 1)
+					)
+				}
+				break
+
 		}
 	}
 }
