@@ -40,6 +40,13 @@ class NuMonthInput extends NuInputElement{
 				display: inline-block;
 
 				--clear-btn-color: #5eb3ce;
+
+				margin: 0em;
+				padding: 1px 2px;
+				background-color: field;
+				border-width: 2px;
+				border-style: inset;
+				border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
 			}
 			#main{
 				display: flex;
@@ -61,7 +68,9 @@ class NuMonthInput extends NuInputElement{
 			#main:hover #clear-btn{
 				color: var(--clear-btn-color)
 			}
-
+			#select-icon{
+				cursor: default;
+			}
 
 		</style>
 		<div id="main">
