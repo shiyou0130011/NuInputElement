@@ -6,7 +6,7 @@ import {NuInputElement} from "./modules/nu-input-element.js"
  * @attribute lang Same as the attribute of the same name as any element. Also, the date string displayed can be formated by this attribute.
  * 	For example, 
  * 		when value is <q>2020-01</q> and lang is <q>ja-JP-u-ca-japanese</q>, it will shows <q>令和2年1月</q>;
- * 		when lang is <q>zh-Hant-TW-u-ca-roc</q>, it will shows <q>民國109/1/1</q>
+ * 		when lang is <q>zh-Hant-TW-u-ca-roc</q>, it will shows <q>民國109/1/1</q>;
  * 		when lang attribute is <q>pt-BR</q>, it will shows <q>janeiro de 2020</q>
  */
 class NuMonthInput extends NuInputElement{
