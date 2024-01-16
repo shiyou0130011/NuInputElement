@@ -78,14 +78,39 @@ class NuMonthInput extends NuInputElement{
 				background-color: transparent !important;
 			}
 
+			#calendar{
+				display: none
+			}
+
 		</style>
 		<div id="main">
 			<span id="display-value">----  --</span>
 			<button id="clear-btn" type="button">⨯</button>
 			<div id="select-icon"><slot name="select-icon">&#x1F4C5;</slot></div>
 		</div>
+		<div id="calendar">
+			<div>
+				<input type="number" min="0" max="9999" id="calendar-year" />
+			</div>
+			<div id="calendar-month-buttons">
+			</div>
+		</div>
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
+
+		// add buttons
+		for(let m = 1; m <= 12; m++){
+			let btn = document.createElement("button")
+			btn.setAttribute("value", m)
+			btn.classList.add("month-btn")
+
+			let lang = this.#formatter.resolvedOptions().locale
+
+			btn.innerHTML = new Intl.DateTimeFormat(lang, {month: "long"}).format(new Date(2000, m - 1))
+			shadowRoot.querySelector("#calendar-month-buttons").appendChild(btn)
+		}
+		
+
 
 		// setup event
 		shadowRoot.querySelector("#clear-btn").addEventListener("click", function(){
@@ -147,6 +172,10 @@ class NuMonthInput extends NuInputElement{
 						new Date(this.#year, this.#month - 1)
 					)
 				}
+				shadowRoot.querySelectorAll("#calendar-month-buttons button").forEach(function(btn){
+					btn.innerHTML = new Intl.DateTimeFormat(newValue, {month: "long"}).format(new Date(2000, btn.value - 1))
+				})
+				
 				break
 
 		}
