@@ -66,10 +66,16 @@ class NuMonthInput extends NuInputElement{
 				color: transparent;
 			}
 			#main:hover #clear-btn{
-				color: var(--clear-btn-color)
+				color: var(--clear-btn-color);
 			}
 			#select-icon{
+				user-select: none;
 				cursor: default;
+			}
+
+			::slotted([slot=select-icon]){
+				user-select: none;
+				background-color: transparent !important;
 			}
 
 		</style>
