@@ -132,8 +132,28 @@ class NuMonthInput extends NuInputElement{
 			if(currentElement.disabled || currentElement.readonly){
 				return false
 			}
+
+			shadowRoot.querySelector("#calendar-year").value = this.#year || new Date().getFullYear()
+						
 			let display = shadowRoot.querySelector("#calendar").dataset.hide
 			shadowRoot.querySelector("#calendar").dataset.hide = !Boolean(display)
+		})
+
+		shadowRoot.querySelector("#calendar-year").addEventListener("input", function(){
+			if(!this.value){
+				return
+			}
+
+			currentElement.#month = currentElement.#month || 1
+			currentElement.value = `${`0000${this.value}`.substr(-4)}-${`00${currentElement.#month}`.substr(-2)}`
+		})
+
+		shadowRoot.querySelectorAll("#calendar-month-buttons button").forEach(function(btn){
+			btn.addEventListener("click", function(){
+				shadowRoot.querySelector("#calendar").dataset.hide = true
+
+				currentElement.value = `${`0000${shadowRoot.querySelector("#calendar-year").value}`.substr(-4)}-${`00${this.value}`.substr(-2)}`
+			})
 		})
 
 		
