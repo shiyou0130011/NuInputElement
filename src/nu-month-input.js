@@ -79,23 +79,32 @@ class NuMonthInput extends NuInputElement{
 				background-color: transparent !important;
 			}
 
-			#calendar{
+			#calendar[data-hide=true]{
 				display: none
+			}
+   			#calendar{
+      				position: absolute;
+      			}
+			#calendar-month-buttons{
+   				display: grid;
+				grid-template-columns: repeat(6, 1fr);
+    				gap: 3px;
 			}
 
 		</style>
-		<div id="main">
-			<span id="display-value">----  --</span>
-			<button id="clear-btn" type="button">⨯</button>
-			<div id="select-icon"><slot name="select-icon">&#x1F4C5;</slot></div>
-		</div>
-		<div id="calendar">
-			<div>
-				<input type="number" min="0" max="9999" id="calendar-year" />
+  		<div id="outer">
+			<div id="main">
+				<span id="display-value">----  --</span>
+				<button id="clear-btn" type="button">⨯</button>
+				<div id="select-icon"><slot name="select-icon">&#x1F4C5;</slot></div>
 			</div>
-			<div id="calendar-month-buttons">
+			<div id="calendar" data-hide="true">
+				<div>
+					<input type="number" min="0" max="9999" id="calendar-year" />
+				</div>
+				<div id="calendar-month-buttons"></div>
 			</div>
-		</div>
+  		</div>
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
 
@@ -111,14 +120,23 @@ class NuMonthInput extends NuInputElement{
 			shadowRoot.querySelector("#calendar-month-buttons").appendChild(btn)
 		}
 		
-
+		// default value
+		shadowRoot.querySelector("#calendar-year").value = new Date().getFullYear()
 
 		// setup event
 		shadowRoot.querySelector("#clear-btn").addEventListener("click", function(){
 			currentElement.removeAttribute("value")
 			currentElement.value = null
 		})
+		shadowRoot.querySelector("#select-icon").addEventListener("click", function(){
+			if(currentElement.disabled || currentElement.readonly){
+				return false
+			}
+			let display = shadowRoot.querySelector("#calendar").dataset.hide
+			shadowRoot.querySelector("#calendar").dataset.hide = !Boolean(display)
+		})
 
+		
 	}
 
 	get value(){
