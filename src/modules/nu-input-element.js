@@ -4,7 +4,7 @@ export class NuInputElement extends HTMLElement{
 
 	constructor() {
 		super()
-		this.role = "input"
+		this.role = "textbox"
 	}
 	
 	static get observedAttributes() {
