@@ -145,7 +145,7 @@ class NuTimeRangeElement extends HTMLElement{
 				this.shadowRoot.getElementById("end").setAttribute(name, newValue)
 				break
 			case "nonce":
-				this.shadowRoot.querySelectorAll("style, script").forEach(function(elem){
+				this.shadowRoot.querySelectorAll("style, script, nu-time-input").forEach(function(elem){
 					elem.setAttribute("nonce", newValue)
 				})
 				break
