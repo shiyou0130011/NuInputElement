@@ -1,6 +1,6 @@
-import {NuInputElement} from "./modules/nu-input-element.js"
+import {NuToggleInputElement} from "./modules/nu-toggle-input-element.js"
 
-class NuCheckboxElement extends NuInputElement{
+class NuCheckboxElement extends NuToggleInputElement{
 	toString(){return `[object NuCheckboxElement]`}
 	constructor() {
 		super()
