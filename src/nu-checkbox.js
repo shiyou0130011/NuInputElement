@@ -82,6 +82,34 @@ class NuCheckboxElement extends NuInputElement{
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
 	}
+
+	static get observedAttributes() {
+		return [... super.observedAttributes, "checked"]
+	}
+
+	set checked(value){
+		let result = value == "checked" || value === true || value === 1
+		if(result){
+			this.setAttribute("checked", "")
+		}else{
+			this.removeAttribute("checked")
+		}
+	}
+	get checked(){
+		return this.shadowRoot.querySelector("checkbox").checked
+	}
+
+	attributeChangedCallback(name, oldValue, newValue){
+		super.attributeChangedCallback(name, oldValue, newValue)
+
+		switch(name){
+			case "checked": 
+				let checked = newValue == "checked" || newValue === ""
+				this.shadowRoot.querySelector("checkbox").checked = checked
+
+				break
+		}
+	}
 }
 
 
