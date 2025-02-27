@@ -108,7 +108,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 		}
 	}
 	get checked(){
-		return this.shadowRoot.querySelector("checkbox").checked
+		return this.shadowRoot.querySelector("[type=checkbox]").checked
 	}
 
 	attributeChangedCallback(name, oldValue, newValue){
