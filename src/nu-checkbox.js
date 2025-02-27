@@ -1,7 +1,7 @@
 import {NuInputElement} from "./modules/nu-input-element.js"
 
 class NuCheckboxElement extends NuInputElement{
-	toString(){return `[object NuTimeInputElement]`}
+	toString(){return `[object NuCheckboxElement]`}
 	constructor() {
 		super()
 		let currentElement = this
