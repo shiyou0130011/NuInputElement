@@ -43,6 +43,13 @@ export class NuToggleInputElement extends HTMLElement{
     get checked(){
         return false
     }
+
+    get value(){
+        if(this.getAttribute("value") !== ""){
+            return this.getAttribute("value")
+        }
+        return "on"
+    }
 	
 	toString(){return `[object NuToggleInputElement]`}
 	connectedCallback(){
@@ -52,8 +59,6 @@ export class NuToggleInputElement extends HTMLElement{
                 if(elm.name != "" && elm.checked){
                     if(elm.value){
                         e.formData.append(elm.name, elm.value)
-                    }else{
-                        e.formData.append(elm.name, "on")
                     }
                 }
 				

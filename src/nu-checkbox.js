@@ -96,7 +96,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 	}
 
 	static get observedAttributes() {
-		return [... super.observedAttributes, "checked"]
+		return [... super.observedAttributes]
 	}
 
 	set checked(value){
