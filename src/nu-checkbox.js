@@ -92,6 +92,7 @@ class NuCheckboxElement extends NuInputElement{
 		</div>
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
+		currentElement.role = "checkbox"	
 	}
 
 	static get observedAttributes() {
