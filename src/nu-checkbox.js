@@ -118,6 +118,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 			case "checked": 
 				let checked = newValue == "checked" || newValue === ""
 				this.shadowRoot.querySelector("checkbox").checked = checked
+				this.ariaChecked = checked
 
 				break
 		}
