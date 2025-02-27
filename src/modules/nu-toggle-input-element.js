@@ -1,5 +1,5 @@
 export class NuToggleInputElement extends HTMLElement{
-    #form = null
+	#form = null
 	#formDataEventHandler = null
 
 	constructor() {
@@ -40,27 +40,34 @@ export class NuToggleInputElement extends HTMLElement{
 		return this.getAttribute("nonce")
 	}
 
-    get checked(){
-        return false
-    }
+	get name(){
+		return this.getAttribute("name")
+	}
+	set name(data){
+		this.setAttribute("name", data)
+	}
 
-    get value(){
-        if(this.getAttribute("value") !== ""){
-            return this.getAttribute("value")
-        }
-        return "on"
-    }
+	get checked(){
+		return false
+	}
+
+	get value(){
+		if(this.getAttribute("value") !== ""){
+			return this.getAttribute("value")
+		}
+		return "on"
+	}
 	
 	toString(){return `[object NuToggleInputElement]`}
 	connectedCallback(){
 		let elm = this
 		this.#formDataEventHandler = function(e){
 			if(e instanceof FormDataEvent){
-                if(elm.name != "" && elm.checked){
-                    if(elm.value){
-                        e.formData.append(elm.name, elm.value)
-                    }
-                }
+				if(elm.name != "" && elm.checked){
+					if(elm.value){
+						e.formData.append(elm.name, elm.value)
+					}
+				}
 				
 			}
 		}
