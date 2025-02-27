@@ -20,6 +20,9 @@ class NuCheckboxElement extends NuInputElement{
 				--checkbox-inner-background: white;
 				
 				--checkbox-text-space: .5rem;
+
+				--checkbox-checked-background: darkgreen;
+				--checkbox-checked-inner-background: var(--checkbox-inner-background);
 			}
 
 			#checkbox-content{
@@ -68,7 +71,14 @@ class NuCheckboxElement extends NuInputElement{
 			input[type=checkbox]:checked ~ #checkbox-outer #checkbox-inner{
 				margin-left: auto;		
 			}
-			
+
+			input[type=checkbox]:checked ~ #checkbox-outer{
+				background-color: var(--checkbox-checked-background);
+				outline-color: var(--checkbox-checked-background);
+			}
+			input[type=checkbox]:checked ~ #checkbox-outer #checkbox-inner{
+				background-color: var(--checkbox-checked-inner-background)
+			}
 		</style>
 		<div id="checkbox-content">
 			<input type="checkbox" id="cb"/>
