@@ -25,7 +25,7 @@ class NuCheckboxElement extends NuInputElement{
 				--checkbox-checked-inner-background: var(--checkbox-inner-background);
 			}
 
-			#checkbox-content{
+			#checkbox-content label{
 				display: flex;
 				column-gap: var(--checkbox-text-space);
 				height: var(--checkbox-height);
@@ -33,6 +33,7 @@ class NuCheckboxElement extends NuInputElement{
 				align-items: center;
 			}
 			#checkbox-outer{
+				display: block;
 				width: var(--checkbox-width);
 				background-color: var(--checkbox-background);
 				height: var(--checkbox-height);
@@ -56,7 +57,7 @@ class NuCheckboxElement extends NuInputElement{
 				
 				transition: margin .5s;
 			}
-			label{
+			div{
 				font-size: var(--label-font-size);
 				font-family: sans-serif
 			}
@@ -68,24 +69,24 @@ class NuCheckboxElement extends NuInputElement{
 				display: none
 			}
 			
-			input[type=checkbox]:checked ~ #checkbox-outer #checkbox-inner{
+			input[type=checkbox]:checked ~ label #checkbox-outer #checkbox-inner{
 				margin-left: auto;		
 			}
 
-			input[type=checkbox]:checked ~ #checkbox-outer{
+			input[type=checkbox]:checked ~ label #checkbox-outer{
 				background-color: var(--checkbox-checked-background);
 				outline-color: var(--checkbox-checked-background);
 			}
-			input[type=checkbox]:checked ~ #checkbox-outer #checkbox-inner{
+			input[type=checkbox]:checked ~ label #checkbox-outer #checkbox-inner{
 				background-color: var(--checkbox-checked-inner-background)
 			}
 		</style>
 		<div id="checkbox-content">
 			<input type="checkbox" id="cb"/>
-			<div id="checkbox-outer">
-				<span id="checkbox-inner"></span>
-			</div>
 			<label for="cb">
+				<span id="checkbox-outer">
+					<span id="checkbox-inner"></span>
+				</span>
 				<slot name="label"></slot>
 			</label>
 		</div>
