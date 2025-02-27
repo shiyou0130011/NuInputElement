@@ -51,6 +51,10 @@ export class NuToggleInputElement extends HTMLElement{
 		return false
 	}
 
+	set value(v){
+		this.setAttribute("value", v)
+	}
+	
 	get value(){
 		if(this.getAttribute("value") !== ""){
 			return this.getAttribute("value")
