@@ -1,5 +1,22 @@
 import {NuToggleInputElement} from "./modules/nu-toggle-input-element.js"
 
+/**
+ * An element which is similar as Apple’s toggle element (https://developer.apple.com/design/human-interface-guidelines/toggles).
+ * 
+ * @attribute name  Same as the attribute of the same name as input
+ * @attribute value Same as the attribute of the same name as input
+ * 
+ * @element nu-checkbox
+ * @csspart --label-font-size
+ * @csspart --checkbox-width
+ * @csspart --checkbox-height
+ * @csspart --checkbox-outline-size
+ * @csspart --checkbox-background
+ * @csspart --checkbox-inner-background
+ * @csspart --checkbox-text-space
+ * @csspart --checkbox-checked-background
+ * @csspart --checkbox-checked-inner-background
+ */
 class NuCheckboxElement extends NuToggleInputElement{
 	toString(){return `[object NuCheckboxElement]`}
 	constructor() {
