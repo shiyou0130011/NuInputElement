@@ -42,7 +42,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 				--checkbox-checked-inner-background: var(--checkbox-inner-background);
 			}
 
-			#checkbox-content label{
+			main label{
 				display: flex;
 				column-gap: var(--checkbox-text-space);
 				height: var(--checkbox-height);
@@ -74,7 +74,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 				
 				transition: margin .5s;
 			}
-			div{
+			main{
 				font-size: var(--label-font-size);
 				font-family: sans-serif
 			}
@@ -98,7 +98,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 				background-color: var(--checkbox-checked-inner-background)
 			}
 		</style>
-		<div id="checkbox-content">
+		<main id="checkbox-content">
 			<input type="checkbox" id="cb"/>
 			<label for="cb">
 				<span id="checkbox-outer">
@@ -106,7 +106,7 @@ class NuCheckboxElement extends NuToggleInputElement{
 				</span>
 				<slot name="label"></slot>
 			</label>
-		</div>
+		</main>
 		`
 		shadowRoot.appendChild(document.importNode(temp.content, true))
 		currentElement.role = "checkbox"	
@@ -132,6 +132,16 @@ class NuCheckboxElement extends NuToggleInputElement{
 		super.attributeChangedCallback(name, oldValue, newValue)
 
 		switch(name){
+			case "disabled":
+			case "readonly":
+				if(newValue === "" || (newValue || "").toLowerCase() == name.toLowerCase()){
+					this.shadowRoot.getElementById("checkbox-content").classList.add(name)
+					this.shadowRoot.querySelector("[type=checkbox]")[name] = true
+				}else{
+					this.shadowRoot.getElementById("checkbox-content").classList.remove(name)
+					this.shadowRoot.querySelector("[type=checkbox]")[name] = false
+				}
+				break
 			case "checked": 
 				let checked = newValue == "checked" || newValue === ""
 				this.shadowRoot.querySelector("checkbox").checked = checked
