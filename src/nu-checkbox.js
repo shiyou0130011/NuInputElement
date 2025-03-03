@@ -6,6 +6,8 @@ import {NuToggleInputElement} from "./modules/nu-toggle-input-element.js"
  * @attribute name  Same as the attribute of the same name as input
  * @attribute value Same as the attribute of the same name as input
  * 
+ * @slot label
+ * 
  * @element nu-checkbox
  * @csspart --label-font-size
  * @csspart --checkbox-width
