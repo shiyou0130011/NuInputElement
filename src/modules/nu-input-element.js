@@ -77,9 +77,11 @@ export class NuInputElement extends HTMLElement{
 	attributeChangedCallback(name, oldValue, newValue){
 		switch(name){
 			case "nonce":
-				this.shadowRoot.querySelectorAll("style, script").forEach(function(elem){
-					elem.setAttribute("nonce", newValue)
-				})
+				if(this.shadowRoot){
+					this.shadowRoot.querySelectorAll("style, script").forEach(function(elem){
+						elem.setAttribute("nonce", newValue)
+					})
+				}
 				break
 		}
 	}
