@@ -40,8 +40,7 @@
 				</div>
 
 				<div class="row">
-					<div class="col form-code">
-						
+					<div class="col form-code">						
 						&lt;nu-time-input name="<input type="text" ng-model="nuTimeName"  />" <br />
 						<span class="tab">&#09;</span> value= "<input type="number" ng-model="nuTimeHour" min="0" max="23" value="0" >:<input type="number" ng-model="nuTimeMinute" min="0" max="59" value="0" >"<br />
 						<span class="tab">&#09;</span> readonly <br />
@@ -49,7 +48,8 @@
 						
 						&lt;hr /&gt; <br />
 						
-						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" start-value="01:23" <br/>
+						&lt;nu-time-input-group start-name="<input type="text" ng-model="nuRangeStart"  />" <br/>
+						<span class="tab">&#09;</span> start-value="01:23" <br/>
 						<span class="tab">&#09;</span> end-name="<input type="text" ng-model="nuRangeEnd"  />" end-value="15:45"<br/>
 						<span class="tab">&#09;</span> readonly <br />
 						<span class="tab">&#09;</span> &gt;&lt;/nu-time-input-group&gt; <br />
